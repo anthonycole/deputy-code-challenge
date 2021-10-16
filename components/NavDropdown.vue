@@ -3,7 +3,7 @@
     <button @focusin="toggleMenu()" class="dropdown-background text-left w-full rounded bg-white border border-color-brand-secondary px-4 py-2 block text-brand-text" @click="active = !active">
       {{ title }}
     </button>
-    <div role="navigation" class="z-50 md:max-h-96 overflow-y-scroll origin-top-left mt-2 md:absolute left-0 w-full md:w-80 bg-white rounded border border-color-grey p-5 text-brand-text" v-if="active">
+    <div role="navigation" class="md:shadow-lg z-50 md:max-h-96 overflow-y-scroll origin-top-left mt-2 md:absolute left-0 w-full md:w-80 bg-white rounded border border-color-grey p-5 text-brand-text" v-if="active">
       <div class="flex justify-between mb-4">
         <p>{{ getActiveMenuItems() }} Selected</p>
         <button class="text-brand-links font-bold underline" @click="clearSelectedItems()">Clear</button>
