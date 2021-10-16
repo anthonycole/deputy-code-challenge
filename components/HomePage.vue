@@ -1,47 +1,36 @@
 <template>
-  <div>
-    <header class="header">
-      <div class="header-grid">
+  <div class="w-full">
+    <header class="header bg-brand-primary">
+      <div class="header-grid w-full max-w-5xl px-4 md:mx-auto">
         <img src="~/static/deputy.png" class="header-img" alt="Deputy" />
         <h1 class="sr-only">Deputy</h1>
       </div>
     </header>
-    <header>
-      <h2>You're in good company</h2>
-    </header>
-    <Filters />
-    <CompanyList />
+    <div class="main">
+      <header class="w-full pt-20 pb-4 text-center font-bold">
+        <h2 class="text-3xl text-brand-primary">You're in good company</h2>
+      </header>
+      <Filters />
+      <CompanyList />
+    </div>
   </div>
 </template>
 
 <style scoped>
+  .main {
+    background: linear-gradient(0deg, #FFFFFF -23.92%, #F3F5F6 100%);
+    background-size: 100% 350px;
+    background-repeat: no-repeat;
+  }
+
   .header {
     height: 70px;
     display: flex;
     align-items: center;
-    background: #093149;
   }
 
   .header-img {
     width: 138px;
     height: 26px;
   }
-
-  .header-grid {
-    flex-grow: 1;
-    margin: 0 auto;
-    align-items: center;
-    width: 100%;
-    max-width: 1060px;
-  }
-
-  .sr-only {
-    position: absolute;
-    left: -10000px;
-    top: auto;
-    width: 1px;
-    height: 1px;
-    overflow: hidden;
-  }
-
 </style>

@@ -1,6 +1,8 @@
 <template>
-  <nav>
-    <p>Filter By</p>
+  <nav class="mx-auto w-full px-4 md:p-0 grid grid-cols-1 md:grid-cols-5 md:gap-4 items-center md:max-w-4xl">
+    <div class="col-auto md:text-right">
+      <p class="uppercase text-brand-text text-sm">Filter By</p>
+    </div>
     <nav-dropdown title="Industries" v-bind:type="MENU_ITEMS.INDUSTRY" v-bind:items="filters.industry" />
     <nav-dropdown title="Location" v-bind:type="MENU_ITEMS.LOCATION" v-bind:items="filters.location"  />
     <nav-dropdown title="Company Size" v-bind:type="MENU_ITEMS.COMPANY_SIZE" v-bind:items="filters.company_size" />
