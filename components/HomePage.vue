@@ -1,13 +1,13 @@
 <template>
   <div class="w-full">
-    <header class="header bg-brand-primary">
-      <div class="header-grid w-full max-w-5xl px-4 md:mx-auto">
+    <header class="header flex items-center bg-brand-primary">
+      <div class="w-full max-w-5xl px-4 md:mx-auto">
         <img src="~/static/deputy.png" class="header-img" alt="Deputy" />
         <h1 class="sr-only">Deputy</h1>
       </div>
     </header>
     <div class="main">
-      <header class="w-full pt-20 pb-4 text-center font-bold">
+      <header class="w-full pt-16 pb-4 text-center font-bold">
         <h2 class="text-3xl text-brand-primary">You're in good company</h2>
       </header>
       <Filters />

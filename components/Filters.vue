@@ -1,5 +1,5 @@
 <template>
-  <nav class="mx-auto w-full px-4 md:p-0 grid grid-cols-1 md:grid-cols-5 md:gap-4 items-center md:max-w-4xl">
+  <nav class="mx-auto w-full px-4 md:p-0 grid grid-cols-1 md:grid-cols-5 md:gap-3 items-center md:max-w-4xl">
     <div class="col-auto md:text-right">
       <p class="uppercase text-brand-text text-sm">Filter By</p>
     </div>
