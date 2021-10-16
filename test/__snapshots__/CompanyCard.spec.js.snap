@@ -1,0 +1,67 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card Component Has the expected markup 1`] = `
+<article>
+  <img
+    alt="1"
+    src="http://placekitten.com/200/300"
+  />
+   
+  <h1>
+    1
+  </h1>
+   
+  <p>
+    1000+
+  </p>
+   
+  <p>
+    Lol
+  </p>
+   
+  <p>
+    <a
+      href="#"
+    >
+      Read More
+    </a>
+  </p>
+   
+  <p>
+    NaN min read
+  </p>
+</article>
+`;
+
+exports[`Card component has the expected html structure 1`] = `
+<article>
+  <img
+    alt="1"
+    src="http://placekitten.com/200/300"
+  />
+   
+  <h1>
+    1
+  </h1>
+   
+  <p>
+    1000+
+  </p>
+   
+  <p>
+    Lol
+  </p>
+   
+  <p>
+    <a
+      href="#"
+    >
+      Read More
+    </a>
+  </p>
+   
+  <p>
+    NaN min read
+  </p>
+</article>
+`;

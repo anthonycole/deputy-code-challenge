@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card Component Has the expected markup 1`] = `
+<menu>
+  <button>
+    
+    Integrations
+  
+  </button>
+   
+  <!---->
+</menu>
+`;
+
+exports[`Navigation Filter Dropdown Component Has the expected markup 1`] = `
+<menu>
+  <button>
+    
+    Integrations
+  
+  </button>
+   
+  <!---->
+</menu>
+`;
