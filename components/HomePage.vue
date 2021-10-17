@@ -8,7 +8,7 @@
     </header>
     <div class="main">
       <header class="w-full pt-16 pb-4 text-center font-bold">
-        <h2 class="text-3xl text-brand-primary">You're in good company</h2>
+        <h2 class="text-3xl text-brand-primary">{{ $t('good_company') }}</h2>
       </header>
       <Filters />
       <CompanyList />
