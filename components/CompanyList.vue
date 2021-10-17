@@ -11,7 +11,7 @@
 export default {
   computed: {
     companies () {
-      return this.$store.state.partners.filteredCompanies;
+      return this.$store.getters["partners/filteredCompanies"](this.$store.state.menu);
     },
   },
   async fetch () {

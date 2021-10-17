@@ -21,7 +21,7 @@ export default {
   },
   computed: {
     filters () {
-      return this.$store.state.partners.filters;
+      return this.$store.getters["partners/filters"];
     }
   },
   async fetch () {

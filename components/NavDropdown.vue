@@ -38,7 +38,7 @@ export default {
       return this.$store.state.menu[this.type].length;
     },
     getMenuItemCount(item) {
-      return this.$store.state.partners.counter[this.type][item]
+      return this.$store.getters["partners/counter"][this.type][item];
     },
     click(item) {
       this.$store.commit(`menu/TOGGLE_${this.type}`, item);

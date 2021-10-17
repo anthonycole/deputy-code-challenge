@@ -14,12 +14,6 @@ interface Company {
   word_count: number;
 }
 
-const filters = {
-  COMPANY_SIZE: "company_size",
-  INDUSTRY: "industry",
-  LOCATION: "location"
-};
-
 interface Filters {
   use_case: string[];
   location: string[];
@@ -31,23 +25,19 @@ const defaultFilters: Filters = {
   use_case: [],
   location: [],
   company_size: [],
-  industry: []
+  industry: [],
 };
 
-export const state = () => ({
-  companies: [] as Company[],
-  filteredCompanies: [] as any,
-  filters: defaultFilters as Filters,
-  counter: [] as any
-});
+const counterUseCaseReducer = (filters: any, companies: Company[]) => {
+  return filters.use_case.reduce((counter: any, filter: any) => {
+    const filterCompanies = companies.filter((company: any) => {
+      return company.use_case.includes(filter);
+    });
 
-export type RootState = ReturnType<typeof state>;
+    counter[filter] = filterCompanies.length;
 
-export const getters: GetterTree<RootState, RootState> = {
-  companies: state => state.companies,
-  filters: state => state.filters,
-  filteredCompanies: state => state.filteredCompanies,
-  counter: state => state.counter
+    return { ...counter };
+  }, {});
 };
 
 const removeDuplicateItems = (items: any) => {
@@ -59,14 +49,32 @@ const removeDuplicateItems = (items: any) => {
 const setCompanyFilters = (companies: Company[]): Filters => {
   return {
     use_case: removeDuplicateItems(
-      companies.map(company => company.use_case).flat()
+      companies.map((company) => company.use_case).flat()
     ),
-    location: removeDuplicateItems(companies.map(company => company.location)),
+    location: removeDuplicateItems(
+      companies.map((company) => company.location)
+    ),
     company_size: removeDuplicateItems(
-      companies.map(company => company.company_size)
+      companies.map((company) => company.company_size)
     ),
-    industry: removeDuplicateItems(companies.map(company => company.industry))
+    industry: removeDuplicateItems(
+      companies.map((company) => company.industry)
+    ),
   };
+};
+
+const counterReducer = (
+  filters: any,
+  companies: Company[],
+  property: string
+) => {
+  return filters[property].reduce((counter: any, filter: any) => {
+    const filterCompanies = companies.filter(
+      (company: any) => company[property] === filter
+    );
+    counter[filter] = filterCompanies.length;
+    return { ...counter };
+  }, {});
 };
 
 const applyStateFilters = (company: Company, filter: any): boolean => {
@@ -89,35 +97,9 @@ const applyStateFilters = (company: Company, filter: any): boolean => {
   return industryFilter || locationFilter || companySizeFilter || useCaseFilter;
 };
 
-const counterReducer = (
-  filters: any,
-  companies: Company[],
-  property: string
-) => {
-  return filters[property].reduce((counter: any, filter: any) => {
-    const filterCompanies = companies.filter(
-      (company: any) => company[property] === filter
-    );
-    counter[filter] = filterCompanies.length;
-    return { ...counter };
-  }, {});
-};
-
-const counterUseCaseReducer = (filters: any, companies: Company[]) => {
-  return filters.use_case.reduce((counter: any, filter: any) => {
-    const filterCompanies = companies.filter((company: any) => {
-      return company.use_case.includes(filter);
-    });
-
-    counter[filter] = filterCompanies.length;
-
-    return { ...counter };
-  }, {});
-};
-
 const setComapnyFilterCount = (state: any) => {
   const companies = [...state.companies];
-  const filters: any = { ...state.filters };
+  const filters: any = setCompanyFilters(companies);
 
   const industryCounter = counterReducer(filters, companies, "industry");
   const locationCounter = counterReducer(filters, companies, "location");
@@ -128,21 +110,32 @@ const setComapnyFilterCount = (state: any) => {
     [MENU_ITEMS.USE_CASE]: useCaseCounter,
     [MENU_ITEMS.LOCATION]: locationCounter,
     [MENU_ITEMS.COMPANY_SIZE]: companySizeCounter,
-    [MENU_ITEMS.INDUSTRY]: industryCounter
+    [MENU_ITEMS.INDUSTRY]: industryCounter,
   };
+};
+
+export const state = () => ({
+  companies: [] as Company[],
+  filteredCompanies: [] as any,
+  filters: defaultFilters as Filters,
+  counter: [] as any,
+});
+
+export type RootState = ReturnType<typeof state>;
+
+export const getters: GetterTree<RootState, RootState> = {
+  companies: (state) => state.companies,
+  filters: (state) => setCompanyFilters(state.companies),
+  filteredCompanies: (state, getters) => (activeFilters: Filters) =>
+    state.companies.filter((company) =>
+      applyStateFilters(company, activeFilters)
+    ),
+  counter: (state) => setComapnyFilterCount(state),
 };
 
 export const mutations: MutationTree<RootState> = {
   FETCH_COMPANIES: (state: RootState, companies) =>
     (state.companies = companies),
-  FILTER_COMPANIES: (state: RootState, payload) =>
-    (state.filteredCompanies = [
-      ...state.companies.filter(company => applyStateFilters(company, payload))
-    ]),
-  SET_FILTERS: (state: RootState, filters) => (state.filters = filters),
-  SET_FILTERED_COMPANIES: (state: RootState) =>
-    (state.filteredCompanies = [...state.companies]),
-  SET_COUNTER: (state: RootState, payload) => (state.counter = { ...payload })
 };
 
 export const actions: ActionTree<RootState, RootState> = {
@@ -152,8 +145,5 @@ export const actions: ActionTree<RootState, RootState> = {
     );
     const companies = await companiesData.json();
     commit("FETCH_COMPANIES", companies);
-    commit("SET_FILTERS", setCompanyFilters(companies));
-    commit("SET_COUNTER", setComapnyFilterCount(state));
-    commit("SET_FILTERED_COMPANIES");
-  }
+  },
 };
