@@ -2,7 +2,7 @@
 
 ## 🌎 Demo Site
 
-Published on Netlify [here] (https://awesome-poitras-eb0891.netlify.app/)
+Published on Netlify [here](https://awesome-poitras-eb0891.netlify.app/)
 
 ## 🗒 Notes
 
