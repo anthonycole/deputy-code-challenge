@@ -1,6 +1,6 @@
 <template>
   <nav class="mx-auto w-full px-4 md:p-0 grid grid-cols-1 md:grid-cols-5 md:gap-3 items-center md:max-w-4xl">
-    <div class="col-auto md:text-right">
+    <div class="col-auto md:text-center">
       <p class="uppercase text-brand-text text-sm">Filter By</p>
     </div>
     <nav-dropdown title="Industries" v-bind:type="MENU_ITEMS.INDUSTRY" v-bind:items="filters.industry" />
@@ -23,9 +23,6 @@ export default {
     filters () {
       return this.$store.getters["partners/filters"];
     }
-  },
-  async fetch () {
-    await this.$store.dispatch('partners/fetchCompanies')
   }
 }
 </script>

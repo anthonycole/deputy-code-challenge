@@ -15,7 +15,13 @@
     </div>
   </div>
 </template>
-
+<script>
+  export default {
+    async fetch () {
+      await this.$store.dispatch('partners/fetchCompanies')
+    }
+  }
+</script>
 <style scoped>
   .main {
     background: linear-gradient(0deg, #FFFFFF -23.92%, #F3F5F6 100%);

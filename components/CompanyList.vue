@@ -13,9 +13,6 @@ export default {
     companies () {
       return this.$store.getters["partners/filteredCompanies"](this.$store.state.menu);
     },
-  },
-  async fetch () {
-    await this.$store.dispatch('partners/fetchCompanies')
   }
 }
 </script>
