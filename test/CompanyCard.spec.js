@@ -11,9 +11,12 @@ describe("Card Component", () => {
           company_name: 1,
           image_url: "http://placekitten.com/200/300",
           company_size: "1000+",
-          excerpt: "Lol"
-        }
-      }
+          excerpt: "Lol",
+        },
+      },
+      mocks: {
+        $t: () => {},
+      },
     });
   });
 

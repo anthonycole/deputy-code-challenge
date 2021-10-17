@@ -8,7 +8,7 @@ exports[`Card Component Has the expected markup 1`] = `
     class="min-h-28 max-h-28"
   >
     <img
-      alt="1"
+      alt="Logo for 1"
       class="object-contain h-20 max-h-20"
       src="http://placekitten.com/200/300"
     />
@@ -41,11 +41,11 @@ exports[`Card Component Has the expected markup 1`] = `
         class="text-brand-links font-bold"
         href="#"
       >
-        Read More
+        
       </a>
        
       <img
-        alt="Read More"
+        alt="Read More Image"
         class="ml-2"
         src="~/assets/images/arrow-right-blue.svg"
       />
@@ -55,11 +55,11 @@ exports[`Card Component Has the expected markup 1`] = `
       class="inline-flex text-xs text-brand-text uppercase tracking-wider"
     >
       <img
-        alt="Read More"
+        alt="Clock Image "
         class="mr-2"
         src="~/assets/images/clock.svg"
       />
-      NaN min read
+      
     
     </p>
   </div>

@@ -10,8 +10,11 @@ describe("Navigation Filter Dropdown Component", () => {
       propsData: {
         title: "Integrations",
         items: ["Other", "Services"],
-        type: MENU_ITEMS.INDUSTRY
-      }
+        type: MENU_ITEMS.INDUSTRY,
+      },
+      mocks: {
+        $t: () => {},
+      },
     });
   });
 

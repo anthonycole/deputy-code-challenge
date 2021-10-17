@@ -8,7 +8,7 @@ exports[`Navigation Filter Dropdown Component Has the expected markup 1`] = `
     class="dropdown-background text-sm text-left w-full rounded bg-white border border-color-brand-secondary px-5 py-2 block text-brand-text"
   >
     
-    Integrations
+    
   
   </button>
    
