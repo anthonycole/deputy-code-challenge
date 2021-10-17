@@ -1,25 +1,7 @@
 import { GetterTree, ActionTree, MutationTree } from "vuex";
 import _ from "lodash";
 import { MENU_ITEMS } from "~/constants";
-
-interface Company {
-  company_id: number;
-  company_name: string;
-  image_url: string;
-  excerpt: string;
-  industry: string;
-  location: string;
-  company_size: string;
-  use_case: string[];
-  word_count: number;
-}
-
-interface Filters {
-  use_case: string[];
-  location: string[];
-  company_size: string[];
-  industry: string[];
-}
+import { Company, Filters } from "../interfaces";
 
 const defaultFilters: Filters = {
   use_case: [],
@@ -134,8 +116,7 @@ export const getters: GetterTree<RootState, RootState> = {
 };
 
 export const mutations: MutationTree<RootState> = {
-  FETCH_COMPANIES: (state: RootState, companies) =>
-    (state.companies = companies),
+  SET_COMPANIES: (state: RootState, companies) => (state.companies = companies),
 };
 
 export const actions: ActionTree<RootState, RootState> = {
@@ -144,6 +125,6 @@ export const actions: ActionTree<RootState, RootState> = {
       "http://www.mocky.io/v2/5d1c07823400005200b5fae7"
     );
     const companies = await companiesData.json();
-    commit("FETCH_COMPANIES", companies);
+    commit("SET_COMPANIES", companies);
   },
 };

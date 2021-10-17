@@ -1,67 +1,67 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Card Component Has the expected markup 1`] = `
-<article>
-  <img
-    alt="1"
-    src="http://placekitten.com/200/300"
-  />
+<article
+  class="mb-4 md:mb-0 md:h-full justify-between flex flex-col items-center bg-white p-10"
+>
+  <div
+    class="min-h-28 max-h-28"
+  >
+    <img
+      alt="1"
+      class="object-contain h-20 max-h-20"
+      src="http://placekitten.com/200/300"
+    />
+  </div>
    
-  <h1>
-    1
-  </h1>
-   
-  <p>
-    1000+
-  </p>
-   
-  <p>
-    Lol
-  </p>
-   
-  <p>
-    <a
-      href="#"
+  <div
+    class="my-4"
+  >
+    <h1
+      class="sr-only"
     >
-      Read More
-    </a>
-  </p>
-   
-  <p>
-    NaN min read
-  </p>
-</article>
-`;
-
-exports[`Card component has the expected html structure 1`] = `
-<article>
-  <img
-    alt="1"
-    src="http://placekitten.com/200/300"
-  />
-   
-  <h1>
-    1
-  </h1>
-   
-  <p>
-    1000+
-  </p>
-   
-  <p>
-    Lol
-  </p>
-   
-  <p>
-    <a
-      href="#"
+      1
+    </h1>
+     
+    <p
+      class="text-brand-text"
+      tabindex="0"
     >
-      Read More
-    </a>
-  </p>
+      Lol
+    </p>
+  </div>
    
-  <p>
-    NaN min read
-  </p>
+  <div
+    class="flex flex-col"
+  >
+    <p
+      class="inline-flex mb-4"
+    >
+      <a
+        class="text-brand-links font-bold"
+        href="#"
+      >
+        Read More
+      </a>
+       
+      <img
+        alt="Read More"
+        class="ml-2"
+        src="~/assets/images/arrow-right-blue.svg"
+      />
+    </p>
+     
+    <p
+      class="inline-flex text-xs text-brand-text uppercase tracking-wider"
+    >
+      <img
+        alt="Read More"
+        class="mr-2"
+        src="~/assets/images/clock.svg"
+      />
+      NaN min read
+    
+    </p>
+  </div>
 </article>
 `;

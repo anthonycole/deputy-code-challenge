@@ -1,20 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Card Component Has the expected markup 1`] = `
-<menu>
-  <button>
-    
-    Integrations
-  
-  </button>
-   
-  <!---->
-</menu>
-`;
-
 exports[`Navigation Filter Dropdown Component Has the expected markup 1`] = `
-<menu>
-  <button>
+<menu
+  class="relative inline-block max-w-48 pl-0"
+>
+  <button
+    class="dropdown-background text-sm text-left w-full rounded bg-white border border-color-brand-secondary px-5 py-2 block text-brand-text"
+  >
     
     Integrations
   
