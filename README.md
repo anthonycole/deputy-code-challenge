@@ -1,5 +1,9 @@
 # 🧮 Code Challenge
 
+## 🌎 Demo Site
+
+Published on Netlify [here] (https://awesome-poitras-eb0891.netlify.app/)
+
 ## 🗒 Notes
 
 - I've used Nuxt with Vue 2 and Tailwind to build this. This my first time using Vue. I thought about using scoped CSS but ended up going for Tailwind as it is a very light framework allowed me to implement a consistent grid and set of units across the app. I've added a color override with the brand colors.
