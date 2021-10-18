@@ -11,8 +11,8 @@ export interface Company {
 }
 
 export interface Filters {
-  use_case: string[];
-  location: string[];
-  company_size: string[];
-  industry: string[];
+  USE_CASE: string[];
+  LOCATION: string[];
+  COMPANY_SIZE: string[];
+  INDUSTRY: string[];
 }

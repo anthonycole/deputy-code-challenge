@@ -1,13 +1,13 @@
 import { GetterTree, ActionTree, MutationTree } from "vuex";
-import _ from "lodash";
-import { MENU_ITEMS } from "~/constants";
+import _, { filter, startCase } from "lodash";
+import { MENU_ITEMS, PAGINATION_COUNT } from "~/constants";
 import { Company, Filters } from "../interfaces";
 
 const defaultFilters: Filters = {
-  use_case: [],
-  location: [],
-  company_size: [],
-  industry: [],
+  USE_CASE: [],
+  LOCATION: [],
+  COMPANY_SIZE: [],
+  INDUSTRY: [],
 };
 
 const counterUseCaseReducer = (filters: any, companies: Company[]) => {
@@ -30,16 +30,16 @@ const removeDuplicateItems = (items: any) => {
 
 const setCompanyFilters = (companies: Company[]): Filters => {
   return {
-    use_case: removeDuplicateItems(
+    USE_CASE: removeDuplicateItems(
       companies.map((company) => company.use_case).flat()
     ),
-    location: removeDuplicateItems(
+    LOCATION: removeDuplicateItems(
       companies.map((company) => company.location)
     ),
-    company_size: removeDuplicateItems(
+    COMPANY_SIZE: removeDuplicateItems(
       companies.map((company) => company.company_size)
     ),
-    industry: removeDuplicateItems(
+    INDUSTRY: removeDuplicateItems(
       companies.map((company) => company.industry)
     ),
   };
@@ -59,13 +59,17 @@ const counterReducer = (
   }, {});
 };
 
-const applyStateFilters = (company: Company, filter: any): boolean => {
-  if (
+const hasEmptyFilters = (filter: Filters) => {
+  return (
     filter.INDUSTRY.length == 0 &&
     filter.LOCATION.length === 0 &&
     filter.COMPANY_SIZE.length === 0 &&
     filter.USE_CASE.length === 0
-  ) {
+  );
+};
+
+const applyStateFilters = (company: Company, filter: any): boolean => {
+  if (hasEmptyFilters(filter)) {
     return true;
   }
 
@@ -101,11 +105,20 @@ const setCompanyFilterCount = (state: any) => {
   };
 };
 
+const setCurrentPages = (companies: Company[], currentPage: number) => {
+  const pageNumber = currentPage - 1;
+  return companies.slice(
+    pageNumber * PAGINATION_COUNT,
+    pageNumber * PAGINATION_COUNT + PAGINATION_COUNT
+  );
+};
+
 export const state = () => ({
   companies: [] as Company[],
   filteredCompanies: [] as any,
   filters: defaultFilters as Filters,
   counter: [] as any,
+  currentPage: 1,
 });
 
 export type RootState = ReturnType<typeof state>;
@@ -113,15 +126,26 @@ export type RootState = ReturnType<typeof state>;
 export const getters: GetterTree<RootState, RootState> = {
   companies: (state) => state.companies,
   filters: (state) => setCompanyFilters(state.companies),
-  filteredCompanies: (state, getters) => (activeFilters: Filters) =>
-    state.companies.filter((company) =>
+  filteredCompanies: (state, getters) => (activeFilters: Filters) => {
+    const companies = state.companies.filter((company) =>
       applyStateFilters(company, activeFilters)
-    ),
+    );
+
+    return setCurrentPages(companies, state.currentPage);
+  },
   counter: (state) => setCompanyFilterCount(state),
+  pages: (state) => {
+    const filterCount = hasEmptyFilters(state.filters)
+      ? state.companies
+      : state.filteredCompanies;
+
+    return Math.ceil((filterCount.length + 1) / PAGINATION_COUNT);
+  },
 };
 
 export const mutations: MutationTree<RootState> = {
   SET_COMPANIES: (state: RootState, companies) => (state.companies = companies),
+  SET_PAGE: (state, payload) => (state.currentPage = payload),
 };
 
 export const actions: ActionTree<RootState, RootState> = {
@@ -130,6 +154,9 @@ export const actions: ActionTree<RootState, RootState> = {
       "http://www.mocky.io/v2/5d1c07823400005200b5fae7"
     );
     const companies = await companiesData.json();
-    commit("SET_COMPANIES", companies);
+    const sortedCompanies = companies.sort((a: Company, b: Company) =>
+      a.company_id > b.company_id ? 1 : -1
+    );
+    commit("SET_COMPANIES", sortedCompanies);
   },
 };
