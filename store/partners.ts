@@ -69,17 +69,22 @@ const applyStateFilters = (company: Company, filter: any): boolean => {
     return true;
   }
 
-  const industryFilter = filter.INDUSTRY.includes(company.industry);
-  const locationFilter = filter.LOCATION.includes(company.location);
-  const companySizeFilter = filter.COMPANY_SIZE.includes(company.company_size);
-  const useCaseFilter = filter.USE_CASE.find((useCase: any) => {
-    return company.use_case.includes(useCase);
-  });
+  const industryFilter =
+    filter.INDUSTRY.includes(company.industry) || filter.INDUSTRY.length == 0;
+  const locationFilter =
+    filter.LOCATION.includes(company.location) || filter.LOCATION.length === 0;
+  const companySizeFilter =
+    filter.COMPANY_SIZE.includes(company.company_size) ||
+    filter.COMPANY_SIZE.length === 0;
+  const useCaseFilter =
+    filter.USE_CASE.find((useCase: any) => {
+      return company.use_case.includes(useCase);
+    }) || filter.USE_CASE.length === 0;
 
-  return industryFilter || locationFilter || companySizeFilter || useCaseFilter;
+  return industryFilter && locationFilter && companySizeFilter && useCaseFilter;
 };
 
-const setComapnyFilterCount = (state: any) => {
+const setCompanyFilterCount = (state: any) => {
   const companies = [...state.companies];
   const filters: any = setCompanyFilters(companies);
 
