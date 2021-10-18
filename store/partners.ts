@@ -117,7 +117,7 @@ export const getters: GetterTree<RootState, RootState> = {
     state.companies.filter((company) =>
       applyStateFilters(company, activeFilters)
     ),
-  counter: (state) => setComapnyFilterCount(state),
+  counter: (state) => setCompanyFilterCount(state),
 };
 
 export const mutations: MutationTree<RootState> = {
