@@ -11,7 +11,7 @@ const defaultFilters: Filters = {
 };
 
 const counterUseCaseReducer = (filters: any, companies: Company[]) => {
-  return filters.use_case.reduce((counter: any, filter: any) => {
+  return filters.USE_CASE.reduce((counter: any, filter: any) => {
     const filterCompanies = companies.filter((company: any) => {
       return company.use_case.includes(filter);
     });
@@ -50,7 +50,7 @@ const counterReducer = (
   companies: Company[],
   property: string
 ) => {
-  return filters[property].reduce((counter: any, filter: any) => {
+  return filters[property.toUpperCase()].reduce((counter: any, filter: any) => {
     const filterCompanies = companies.filter(
       (company: any) => company[property] === filter
     );

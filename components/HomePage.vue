@@ -1,14 +1,14 @@
 <template>
-  <div class="w-full">
-    <header class="header flex items-center bg-brand-primary">
-      <div class="w-full max-w-5xl px-4 md:mx-auto">
+  <div>
+    <header class="header">
+      <div class="header-inner">
         <img src="~/static/deputy.png" class="header-img" alt="Deputy" />
         <h1 class="sr-only">Deputy</h1>
       </div>
     </header>
     <div class="main">
-      <header class="w-full pt-16 pb-4 text-center font-bold">
-        <h2 class="text-3xl text-brand-primary">{{ $t('good_company') }}</h2>
+      <header class="header-welcome-container">
+        <h2 class="header-welcome-text">{{ $t('good_company') }}</h2>
       </header>
       <Filters />
       <CompanyList />
@@ -33,6 +33,26 @@
     height: 70px;
     display: flex;
     align-items: center;
+    background-color: var(--primary);
+  }
+
+  .header-inner {
+    width: 100%;
+    max-width: var(--grid-width);
+    margin: 0 auto;
+  }
+
+  .header-welcome-container {
+    padding-top: 4rem;
+    padding-bottom: 1rem;
+    text-align: center;
+  }
+
+  .header-welcome-text {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+    font-weight: bold;;
+    color: var(--primary)
   }
 
   .header-img {

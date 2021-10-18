@@ -1,5 +1,14 @@
 @import url("https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap");
 
+:root {
+  --primary: #093149;
+  --secondary: #f3f5f6;
+  --text: #5d7888;
+  --links: #1f77bc;
+  --grid-width: 1050px;
+  --white: #ffffff;
+}
+
 html,
 body,
 #__layout,

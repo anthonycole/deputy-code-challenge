@@ -1,6 +1,6 @@
 <template>
-  <menu class="relative inline-block max-w-48 pl-0">
-    <button @focusin="toggleMenu()" class="dropdown-background text-sm text-left w-full rounded bg-white border border-color-brand-secondary px-5 py-2 block text-brand-text" @click="active = !active">
+  <menu class="menu">
+    <button @focusin="toggleMenu()" class="menu-button" @click="active = !active">
       {{ $t(title) }}
     </button>
     <div role="navigation" class="md:shadow-lg z-50 md:max-h-96 overflow-y-scroll origin-top-left mt-2 md:absolute left-0 w-full md:w-80 bg-white rounded border border-color-grey p-5 text-brand-text" v-if="active">
@@ -53,7 +53,27 @@ export default {
 </script>
 
 <style scoped>
-  .dropdown-background {
+  .menu {
+    position: relative;
+    display: block;
+    padding-left: 0;
+    width: 100%;
+    display: inline-block;
+  }
+
+  .menu-button {
+    width: 100%;
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+    text-align: left;
+    border-radius: 0.25rem;
+    border: 1px solid var(--secondary);
+    color: 1px solid var(--text);
+    background-color: var(--white);
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
     background-image: url('~/assets/images/arrow-down.svg');
     background-position: 90% center;
     background-repeat: no-repeat;
