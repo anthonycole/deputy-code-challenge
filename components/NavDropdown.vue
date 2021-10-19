@@ -1,16 +1,18 @@
 <template>
-  <div class="nav-menu">
-    <button @focusin="toggleMenu()" class="menu-button" @click="active = !active">
-      {{ $t(title) }}
-    </button>
-    <div role="navigation" class="menu-dropdown" v-if="active">
-      <div class="menu-top-container">
-        <p>{{ getActiveMenuItems() }} Selected</p>
-        <button class="menu-button-clear" @click="clearSelectedItems()">Clear</button>
+  <div>
+    <div class="nav-menu">
+      <button @focusin="toggleMenu()" class="menu-button" @click="active = !active">
+        {{ $t(title) }}
+      </button>
+      <div role="navigation" class="menu-dropdown" v-if="active">
+        <div class="menu-top-container">
+          <p>{{ getActiveMenuItems() }} Selected</p>
+          <button class="menu-button-clear" @click="clearSelectedItems()">Clear</button>
+        </div>
+        <ul>
+          <li v-for="item of items" v-bind:key="item"><button v-bind:class="{'menu-item-selected': checkIsActive(item)}" @click="click(item)" class="menu-item">{{ item }} ({{ getMenuItemCount(item) }}) </button></li>
+        </ul>
       </div>
-      <ul>
-        <li v-for="item of items" v-bind:key="item"><button v-bind:class="{'menu-item-selected': checkIsActive(item)}" @click="click(item)" class="menu-item">{{ item }} ({{ getMenuItemCount(item) }}) </button></li>
-      </ul>
     </div>
   </div>
 </template>
