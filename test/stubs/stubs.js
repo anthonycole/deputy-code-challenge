@@ -33,16 +33,45 @@ export const COMPANIES = [
   },
 ];
 
+export const UNIQUE_COMPANIES = [
+  {
+    company_id: 1,
+    company_name: "Deputy",
+    image_url:
+      "https://d21pqaamub0upm.cloudfront.net/dptycms/wp-content/themes/deputy/assets/imagesnew/logo/deputy-stack-blue@2x.png",
+    excerpt:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.",
+    industry: "Other",
+    location: "Australia",
+    company_size: "100+",
+    use_case: ["Employee Scheduling", "Time & Attendance"],
+    word_count: 452,
+  },
+  {
+    company_id: 2,
+    company_name: "DropCar",
+    image_url:
+      "https://d21pqaamub0upm.cloudfront.net/dptycms/wp-content/uploads/2018/12/DropCar_LOGO1.png",
+    excerpt:
+      "DropCar saw a 57% decrease in the number of no-shows amongst their drivers after using Deputy.",
+    industry: "Services",
+    location: "Australia",
+    company_size: "50-100",
+    use_case: ["Auto-Scheduling"],
+    word_count: 633,
+  },
+];
+
 export const STUBBED_FILTER_STATE = {
-  use_case: [
+  USE_CASE: [
     "Employee Scheduling",
     "Time & Attendance",
     "Performance Management",
     "Auto-Scheduling",
   ],
-  location: ["Australia"],
-  company_size: ["100+", "50-100"],
-  industry: ["Other", "Services"],
+  LOCATION: ["Australia"],
+  COMPANY_SIZE: ["100+", "50-100"],
+  INDUSTRY: ["Other", "Services"],
 };
 
 export const STUBBED_COUNTER_RESPONSE = {

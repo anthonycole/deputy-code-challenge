@@ -11,12 +11,11 @@ Published on Netlify [here](https://awesome-poitras-eb0891.netlify.app/)
 - I've used VueX for state management and pulled the API response into a store. I've used two stores here; If I had more time to think through the way this is strucuted or a more comprehensive API I would probably redesign this as well as asked for pagination results in the API response.
 - My unit tests and mocks are centered around what is most likely to break. I've tried to focus on the state reducers and added a few snapshot tests of the critical components used in the app.
 - There are spelling mistakes and duplicate labels in the API response. I've left them in; In a team context I would have tried to collaborate with the API team in order to fix this.
-- I made a "captains call" and didn't paginate my results as there were no design resources and the functionality wasn't clear.
+- I'vw used Nuxt and added pagination with page routing.
 - There was no link to follow and no more relevant data to display in the API response so I added a blank link for "Read More".
 
 ## ⏰ What I would have done with more time
 
-- Added Pagination
 - Written more comprehensive tests (targeting more edge cases, e2e with Puppeteer)
 
 ## 🏗️ Build Setup

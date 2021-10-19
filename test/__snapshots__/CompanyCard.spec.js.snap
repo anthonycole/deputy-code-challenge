@@ -2,20 +2,20 @@
 
 exports[`Card Component Has the expected markup 1`] = `
 <article
-  class="mb-4 md:mb-0 md:h-full justify-between flex flex-col items-center bg-white p-10"
+  class="card"
 >
   <div
-    class="min-h-28 max-h-28"
+    class="card-company-image-container"
   >
     <img
       alt="Logo for 1"
-      class="object-contain h-20 max-h-20"
+      class="card-company-image"
       src="http://placekitten.com/200/300"
     />
   </div>
    
   <div
-    class="my-4"
+    class="card-company-info"
   >
     <h1
       class="sr-only"
@@ -24,7 +24,7 @@ exports[`Card Component Has the expected markup 1`] = `
     </h1>
      
     <p
-      class="text-brand-text"
+      class="card-company-info-text"
       tabindex="0"
     >
       Lol
@@ -32,13 +32,13 @@ exports[`Card Component Has the expected markup 1`] = `
   </div>
    
   <div
-    class="flex flex-col"
+    class="card-read-more-container"
   >
     <p
-      class="inline-flex mb-4"
+      class="card-read-more-link-container"
     >
       <a
-        class="text-brand-links font-bold"
+        class="card-read-more-link"
         href="#"
       >
         
@@ -46,17 +46,17 @@ exports[`Card Component Has the expected markup 1`] = `
        
       <img
         alt="Read More Image"
-        class="ml-2"
+        class="card-read-more-link-image"
         src="~/assets/images/arrow-right-blue.svg"
       />
     </p>
      
     <p
-      class="inline-flex text-xs text-brand-text uppercase tracking-wider"
+      class="card-reading-time-container-link"
     >
       <img
         alt="Clock Image "
-        class="mr-2"
+        class="card-reading-time-image"
         src="~/assets/images/clock.svg"
       />
       

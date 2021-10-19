@@ -5,6 +5,8 @@ import {
   EMPTY_FITLER_STATE,
   STUBBED_FILTER_STATE,
   STUBBED_COUNTER_RESPONSE,
+  UNIQUE_COMPANIES,
+  SAMPLE_FILTER,
 } from "./stubs/stubs";
 
 test("Get Filter Count", () => {
@@ -28,6 +30,20 @@ test("Get Filtered Companies", () => {
 
   const filteredCompanies = getterInstance(filters);
   expect(filteredCompanies).toEqual(COMPANIES);
+});
+
+test("Get Uniquely Filtered Companies", () => {
+  const state = {
+    companies: UNIQUE_COMPANIES,
+  };
+
+  const getterInstance = getters.filteredCompanies(state);
+
+  const filters = EMPTY_FITLER_STATE;
+  filters.USE_CASE = [SAMPLE_FILTER];
+
+  const filteredCompanies = getterInstance(filters);
+  expect(filteredCompanies).toEqual([UNIQUE_COMPANIES[1]]);
 });
 
 test("Set Company Filters", () => {
