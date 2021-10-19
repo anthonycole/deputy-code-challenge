@@ -1,8 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Navigation Filter Dropdown Component Has the expected markup 1`] = `
-<menu
-  class="menu"
+<div
+  class="nav-menu"
 >
   <button
     class="menu-button"
@@ -13,5 +13,5 @@ exports[`Navigation Filter Dropdown Component Has the expected markup 1`] = `
   </button>
    
   <!---->
-</menu>
+</div>
 `;
