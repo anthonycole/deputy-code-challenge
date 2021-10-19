@@ -1,18 +1,16 @@
 <template>
-  <div>
-    <div class="nav-menu">
-      <button @focusin="toggleMenu()" class="menu-button" @click="active = !active">
-        {{ $t(title) }}
-      </button>
-      <div role="navigation" class="menu-dropdown" v-if="active">
-        <div class="menu-top-container">
-          <p>{{ getActiveMenuItems() }} Selected</p>
-          <button class="menu-button-clear" @click="clearSelectedItems()">Clear</button>
-        </div>
-        <ul>
-          <li v-for="item of items" v-bind:key="item"><button v-bind:class="{'menu-item-selected': checkIsActive(item)}" @click="click(item)" class="menu-item">{{ item }} ({{ getMenuItemCount(item) }}) </button></li>
-        </ul>
+  <div class="nav-menu">
+    <button @focusin="toggleMenu()" class="menu-button" @click="active = !active">
+      {{ $t(title) }}
+    </button>
+    <div role="navigation" class="menu-dropdown" v-if="active">
+      <div class="menu-top-container">
+        <p>{{ getActiveMenuItems() }} Selected</p>
+        <button class="menu-button-clear" @click="clearSelectedItems()">Clear</button>
       </div>
+      <ul>
+        <li v-for="item of items" v-bind:key="item"><button v-bind:class="{'menu-item-selected': checkIsActive(item)}" @click="click(item)" class="menu-item">{{ item }} ({{ getMenuItemCount(item) }}) </button></li>
+      </ul>
     </div>
   </div>
 </template>
@@ -53,12 +51,6 @@ export default {
 </script>
 
 <style scoped>
-  .nav-menu {
-    position: relative;
-    width: 100%;
-    display: inline-block;
-  }
-
   .menu-button {
     display: block;
     width: 100%;
@@ -78,6 +70,12 @@ export default {
     background-position: 90% center;
     background-repeat: no-repeat;
     background-size: 7px 10px;
+  }
+
+  .nav-menu {
+    position: relative;
+    width: 100%;
+    display: inline-block;
   }
 
   .menu-dropdown {
