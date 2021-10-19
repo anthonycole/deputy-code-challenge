@@ -53,7 +53,6 @@ export default {
 <style scoped>
   .menu {
     position: relative;
-    padding-left: 0;
     width: 100%;
     display: inline-block;
   }
