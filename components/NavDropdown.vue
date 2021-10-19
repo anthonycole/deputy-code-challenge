@@ -51,6 +51,14 @@ export default {
 </script>
 
 <style scoped>
+  div.title {}
+
+  .nav-menu {
+    position: relative;
+    width: 100%;
+    display: inline-block;
+  }
+
   .menu-button {
     display: block;
     width: 100%;
@@ -70,12 +78,6 @@ export default {
     background-position: 90% center;
     background-repeat: no-repeat;
     background-size: 7px 10px;
-  }
-
-  .nav-menu {
-    position: relative;
-    width: 100%;
-    display: inline-block;
   }
 
   .menu-dropdown {
