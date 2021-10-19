@@ -14,19 +14,17 @@
 </template>
 
 <script>
-import { countdown, hasEmptyFilters } from '~/utilities';
-import { mapGetters } from 'vuex';
+import { countdown } from '~/utilities';
 import { PAGINATION_COUNT } from '../constants';
 
 export default {
   computed: {
     companies () {
-      const { menu, partners } = this.$store.state
+      const { menu } = this.$store.state
       return this.$store.getters["partners/filteredCompanies"](menu);
     },
     companyList() {
-      const { menu, partners } = this.$store.state;
-      const { companies } = this.$store.state.partners;
+      const { menu } = this.$store.state;
       return this.$store.getters["partners/filteredCompaniesPaginate"](menu);
     },
     pagination () {
