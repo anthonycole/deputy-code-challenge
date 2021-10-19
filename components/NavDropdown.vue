@@ -1,5 +1,5 @@
 <template>
-  <menu class="menu">
+  <div class="menu">
     <button @focusin="toggleMenu()" class="menu-button" @click="active = !active">
       {{ $t(title) }}
     </button>
@@ -12,7 +12,7 @@
         <li v-for="item of items" v-bind:key="item"><button v-bind:class="{'menu-item-selected': checkIsActive(item)}" @click="click(item)" class="menu-item">{{ item }} ({{ getMenuItemCount(item) }}) </button></li>
       </ul>
     </div>
-  </menu>
+  </div>
 </template>
 
 <script>
