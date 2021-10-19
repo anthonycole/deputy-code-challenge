@@ -18,7 +18,7 @@ export default {
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
-  css: ["~/assets/css/base.css"],
+  css: ["~/assets/css/reset.css", "~/assets/css/base.css"],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [],
@@ -27,11 +27,7 @@ export default {
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: [
-    "@nuxt/typescript-build",
-    "@nuxtjs/tailwindcss",
-    "@nuxtjs/i18n",
-  ],
+  buildModules: ["@nuxt/typescript-build", "@nuxtjs/i18n"],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [],

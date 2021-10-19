@@ -23,17 +23,12 @@
   }
 </script>
 <style scoped>
-  .main {
-    background: linear-gradient(0deg, #FFFFFF -23.92%, #F3F5F6 100%);
-    background-size: 100% 350px;
-    background-repeat: no-repeat;
-  }
-
   .header {
     height: 70px;
     display: flex;
     align-items: center;
-    background-color: var(--primary);
+    background-color: var(--color-primary);
+    padding: 1rem;
   }
 
   .header-inner {
@@ -52,11 +47,19 @@
     font-size: 1.875rem;
     line-height: 2.25rem;
     font-weight: bold;;
-    color: var(--primary)
+    color: var(--color-primary)
   }
 
   .header-img {
     width: 138px;
     height: 26px;
+  }
+
+  @media (min-width: 768px) {
+    .main {
+      background: linear-gradient(0deg, #FFFFFF -23.92%, #F3F5F6 100%);
+      background-size: 100% 350px;
+      background-repeat: no-repeat;
+    }
   }
 </style>

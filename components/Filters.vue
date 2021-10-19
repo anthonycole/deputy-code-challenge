@@ -1,7 +1,7 @@
 <template>
-  <nav class="mx-auto w-full px-4 md:p-0 grid grid-cols-1 md:grid-cols-5 md:gap-3 items-center md:max-w-4xl">
-    <div class="col-auto md:text-center">
-      <p class="uppercase text-brand-text text-sm">{{ $t("filter_by") }}</p>
+  <nav class="filters-grid filters-grid-responsive">
+    <div class="filters-grid-text">
+      <p class="filters-grid-text-link">{{ $t("filter_by") }}</p>
     </div>
     <nav-dropdown title="industries" v-bind:type="MENU_ITEMS.INDUSTRY" v-bind:items="filters.INDUSTRY" />
     <nav-dropdown title="location" v-bind:type="MENU_ITEMS.LOCATION" v-bind:items="filters.LOCATION"  />
@@ -26,3 +26,38 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  @media (min-width: 768px) {
+    .filters-grid-responsive {
+      padding: 0;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 0.75rem;
+      max-width: 56rem;
+    }
+
+    .filters-grid-text {
+      grid-column: auto;
+      text-align: center;
+    }
+  }
+
+  .filters-grid {
+    padding: 1rem;
+    margin: 0 auto;
+    display: grid;
+    align-items: center;
+    max-width: auto;
+  }
+
+  .filters-grid-text {
+    color: var(--color-text);
+    text-transform: uppercase;
+  }
+
+  .filters-grid-text-link {
+    color: var(--color-text);
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  };
+</style>

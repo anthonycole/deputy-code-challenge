@@ -1,12 +1,28 @@
 @import url("https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&display=swap");
 
 :root {
-  --primary: #093149;
-  --secondary: #f3f5f6;
-  --text: #5d7888;
-  --links: #1f77bc;
+  --color-primary: #093149;
+  --color-secondary: #f3f5f6;
+  --color-border: #ced6db;
+  --color-text: #5d7888;
+  --color-links: #1f77bc;
+  --color-white: #ffffff;
   --grid-width: 1050px;
-  --white: #ffffff;
+  --border-radius: 0.25rem;
+}
+
+.sr-only {
+  border: 0 !important;
+  clip: rect(1px, 1px, 1px, 1px) !important; /* 1 */
+  -webkit-clip-path: inset(50%) !important;
+  clip-path: inset(50%) !important; /* 2 */
+  height: 1px !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  padding: 0 !important;
+  position: absolute !important;
+  width: 1px !important;
+  white-space: nowrap !important; /* 3 */
 }
 
 html,
@@ -15,4 +31,5 @@ body,
 #__nuxt {
   width: 100%;
   background: #f3f5f6;
+  font-family: "PT Sans", sans-serif;
 }

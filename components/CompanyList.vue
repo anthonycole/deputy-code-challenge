@@ -1,12 +1,12 @@
 <template>
   <div>
-    <ul class="mt-8 mx-auto w-full pt-4 px-4 md:pt-0 md:px-0 md:mb-4 grid grid-cols-1 md:grid-cols-3 md:gap-4 items-center md:max-w-5xl">
+    <ul class="companies-grid">
       <li class="md:h-full" v-for="company in companies" v-bind:key="company.company_id">
         <company-card v-bind:company="company" />
       </li>
     </ul>
-    <ul>
-      <li class="lol" v-for="page in pagination" v-bind:key="page">
+    <ul class="pagination">
+      <li class="pagination-item" v-for="page in pagination" v-bind:key="page">
         <button @click="togglePage(page)">{{ page }}</button>
       </li>
     </ul>
@@ -42,3 +42,45 @@ export default {
   }
 }
 </script>
+<style scoped>
+  @media (min-width: 768px) {
+    .companies-grid {
+      padding: 0;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      max-width: 56rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  .companies-grid {
+    margin: 0 auto;
+    max-width: 64rem;
+    margin-top: 2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    margin-bottom: 1rem;
+    display: grid;
+    gap: 1rem;
+    height: 100%;
+  }
+
+  .pagination {
+    display: flex;
+    padding-top: 0.5rem;
+    padding-left: 1rem;
+    width: 100%;
+    max-width: 64rem;
+    margin: 0 auto;
+    margin-bottom: 1rem;
+  }
+
+  .pagination-item {
+    background: var(--color-white);
+    color: var(--color-text);
+    padding-top: 0.25rem;
+    padding-bottom: 0.25rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    margin-right: 0.25rem;
+  }
+</style>
