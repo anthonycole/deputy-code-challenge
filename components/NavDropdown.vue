@@ -1,5 +1,5 @@
 <template>
-  <div class="menu">
+  <div class="nav-menu">
     <button @focusin="toggleMenu()" class="menu-button" @click="active = !active">
       {{ $t(title) }}
     </button>
@@ -51,7 +51,7 @@ export default {
 </script>
 
 <style scoped>
-  .menu {
+  .nav-menu {
     position: relative;
     width: 100%;
     display: inline-block;
