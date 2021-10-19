@@ -1,3 +1,5 @@
+import { Filters } from "./interfaces";
+
 export const MENU_ITEMS = {
   INDUSTRY: "INDUSTRY",
   LOCATION: "LOCATION",
@@ -13,4 +15,13 @@ export const countdown = (start: number) => {
     arr.unshift(start);
     return arr;
   }
+};
+
+export const hasEmptyFilters = (filter: Filters) => {
+  return (
+    filter.INDUSTRY.length == 0 &&
+    filter.LOCATION.length === 0 &&
+    filter.COMPANY_SIZE.length === 0 &&
+    filter.USE_CASE.length === 0
+  );
 };

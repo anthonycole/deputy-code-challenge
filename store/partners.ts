@@ -1,7 +1,8 @@
 import { GetterTree, ActionTree, MutationTree } from "vuex";
-import _, { filter, startCase } from "lodash";
+import _, { filter, indexOf, startCase } from "lodash";
 import { MENU_ITEMS, PAGINATION_COUNT } from "~/constants";
 import { Company, Filters } from "../interfaces";
+import { hasEmptyFilters } from "~/utilities";
 
 const defaultFilters: Filters = {
   USE_CASE: [],
@@ -57,15 +58,6 @@ const counterReducer = (
     counter[filter] = filterCompanies.length;
     return { ...counter };
   }, {});
-};
-
-const hasEmptyFilters = (filter: Filters) => {
-  return (
-    filter.INDUSTRY.length == 0 &&
-    filter.LOCATION.length === 0 &&
-    filter.COMPANY_SIZE.length === 0 &&
-    filter.USE_CASE.length === 0
-  );
 };
 
 const applyStateFilters = (company: Company, filter: any): boolean => {
@@ -126,21 +118,24 @@ export type RootState = ReturnType<typeof state>;
 export const getters: GetterTree<RootState, RootState> = {
   companies: (state) => state.companies,
   filters: (state) => setCompanyFilters(state.companies),
-  filteredCompanies: (state, getters) => (activeFilters: Filters) => {
-    const companies = state.companies.filter((company) =>
-      applyStateFilters(company, activeFilters)
-    );
+  filteredCompaniesPaginate: (state, getters) => (activeFilters: Filters) => {
+    const companies = [
+      ...state.companies.filter((company) =>
+        applyStateFilters(company, activeFilters)
+      ),
+    ];
 
     return setCurrentPages(companies, state.currentPage);
   },
-  counter: (state) => setCompanyFilterCount(state),
-  pages: (state) => {
-    const filterCount = hasEmptyFilters(state.filters)
-      ? state.companies
-      : state.filteredCompanies;
-
-    return Math.ceil((filterCount.length + 1) / PAGINATION_COUNT);
+  filteredCompanies: (state, getters) => (activeFilters: Filters) => {
+    const companies = [
+      ...state.companies.filter((company) =>
+        applyStateFilters(company, activeFilters)
+      ),
+    ];
+    return companies;
   },
+  counter: (state) => setCompanyFilterCount(state),
 };
 
 export const mutations: MutationTree<RootState> = {

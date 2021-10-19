@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul class="companies-grid">
-      <li class="md:h-full" v-for="company in companies" v-bind:key="company.company_id">
+      <li class="md:h-full" v-for="company in companyList" v-bind:key="company.company_id">
         <company-card v-bind:company="company" />
       </li>
     </ul>
@@ -14,7 +14,9 @@
 </template>
 
 <script>
-import { countdown } from '~/utilities';
+import { countdown, hasEmptyFilters } from '~/utilities';
+import { mapGetters } from 'vuex';
+import { PAGINATION_COUNT } from '../constants';
 
 export default {
   computed: {
@@ -22,22 +24,23 @@ export default {
       const { menu, partners } = this.$store.state
       return this.$store.getters["partners/filteredCompanies"](menu);
     },
+    companyList() {
+      const { menu, partners } = this.$store.state;
+      const { companies } = this.$store.state.partners;
+      return this.$store.getters["partners/filteredCompaniesPaginate"](menu);
+    },
     pagination () {
-      return countdown(this.$store.getters["partners/pages"]).sort();
-    }
+      const count = Math.ceil(this.companies.length / PAGINATION_COUNT);
+      return countdown(count).sort();
+    },
   },
   watch: {
     '$route.query': '$fetch'
   },
-  async fetch() {
-    // Called also on query changes
-    const page = this.$route.params.id || 1;
-
-    this.$store.commit(`partners/SET_PAGE`, page);
-  },
   methods: {
     togglePage(id) {
-      this.$router.push({ path: `/page/${id}` })
+      this.$router.push({ path: `/page/${id}` });
+      this.$store.commit(`partners/SET_PAGE`, id);
     }
   }
 }

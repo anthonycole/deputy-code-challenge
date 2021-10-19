@@ -42,11 +42,9 @@ export default {
     },
     click(item) {
       this.$store.commit(`menu/TOGGLE_${this.type}`, item);
-      this.$store.commit(`partners/FILTER_COMPANIES`, this.$store.state.menu);
     },
     clearSelectedItems() {
       this.$store.commit(`menu/CLEAR_${this.type}`);
-      this.$store.commit(`partners/FILTER_COMPANIES`, this.$store.state.menu);
     }
   }
 }
